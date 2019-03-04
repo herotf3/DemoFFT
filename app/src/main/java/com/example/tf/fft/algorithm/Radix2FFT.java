@@ -47,8 +47,10 @@ public class Radix2FFT {
 
     public void run(ShortValues input, DoubleValues output) {
         if(input.size() != n) throw new UnsupportedOperationException();
+        //apply window function
+        input = new HannWindow(n).applyWindow(input);
 
-        // init input values
+        // init input values to complex
         final short[] itemsArray = input.getItemsArray();
         for (int i = 0; i < n; i++) {
             final Complex complex = x[i];
@@ -151,10 +153,6 @@ public class Radix2FFT {
                 }
             }
         }
-    }
-
-    private static class Complex {
-        double re, im;
     }
 
     //log mel frequency
