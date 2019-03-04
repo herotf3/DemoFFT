@@ -8,7 +8,7 @@ import com.example.tf.fft.kotlin.model.DataProviderBase
 import java.util.concurrent.TimeUnit
 
 class DefaultAudioAnalyzerDataProvider
-(private val sampleRate: Int = 44100,
+(private val sampleRate: Int = 20000,
 
  private val minBufferSize: Int = 2048, // should be with power of 2 for correct work of FFT
  interval: Long = (sampleRate / minBufferSize).toLong()
