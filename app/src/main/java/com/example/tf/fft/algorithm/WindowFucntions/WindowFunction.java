@@ -1,4 +1,4 @@
-package com.example.tf.fft.algorithm;
+package com.example.tf.fft.algorithm.WindowFucntions;
 
 import com.scichart.core.model.ShortValues;
 
@@ -13,12 +13,14 @@ public abstract class WindowFunction {
         this.n = n;
     }
 
-    public ShortValues applyWindow(ShortValues input){
+    final public ShortValues applyWindow(ShortValues input){
         short[] items = input.getItemsArray();
         for(int i=0;i<items.length;i++){
-            items[i] *= 0.5*(1 - Math.cos((2 * Math.PI * i) / (this.n-1)));
+            items[i] *= windowMultipler(i,n);
         }
         return  new ShortValues(items);
     }
+
+    protected abstract double windowMultipler(int i, int n);
 }
 

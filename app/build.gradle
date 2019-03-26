@@ -24,19 +24,21 @@ android {
     }
 }
 repositories {
+    google()
     mavenLocal()
     mavenCentral()
 
     maven { url 'https://www.myget.org/F/abtsoftware/maven' }
     maven() { url "https://oss.sonatype.org/content/repositories/snapshots" }
+
 }
 
 dependencies {
-    compile (group: 'com.scichart.library', name: 'core', version: '2.5.0.2496', ext: 'aar')
-    compile (group: 'com.scichart.library', name: 'data', version: '2.5.0.2496', ext: 'aar')
-    compile (group: 'com.scichart.library', name: 'drawing', version: '2.5.0.2496', ext: 'aar')
-    compile (group: 'com.scichart.library', name: 'charting', version: '2.5.0.2496', ext: 'aar')
-    compile (group: 'com.scichart.library', name: 'extensions', version: '2.5.0.2496', ext: 'aar')
+    compile 'com.scichart.library:core:2.5.0.2496@aar'
+    compile 'com.scichart.library:data:2.5.0.2496@aar'
+    compile 'com.scichart.library:drawing:2.5.0.2496@aar'
+    compile 'com.scichart.library:charting:2.5.0.2496@aar'
+    compile 'com.scichart.library:extensions:2.5.0.2496@aar'
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
     implementation "com.android.support:design:$supportLibraryVersion"
     implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
@@ -55,8 +57,6 @@ dependencies {
     implementation 'com.github.pwittchen:reactivenetwork-rx2:0.10.0'
     kapt "com.android.databinding:compiler:$android_plugin_version"
     implementation 'com.ogaclejapan.arclayout:library:1.1.0@aar'
-}
-repositories {
-    mavenCentral()
-    google()
+
+    compile fileTree(dir: 'libs', include: '*.jar')
 }

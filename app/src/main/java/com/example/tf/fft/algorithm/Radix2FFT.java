@@ -1,5 +1,7 @@
 package com.example.tf.fft.algorithm;
 
+import com.example.tf.fft.algorithm.WindowFucntions.TriangularWindow;
+import com.example.tf.fft.algorithm.WindowFucntions.WindowFunction;
 import com.scichart.core.model.DoubleValues;
 import com.scichart.core.model.ShortValues;
 import com.scichart.core.utility.DoubleUtil;
@@ -48,7 +50,7 @@ public class Radix2FFT {
     public void run(ShortValues input, DoubleValues output) {
         if(input.size() != n) throw new UnsupportedOperationException();
         //apply window function
-        WindowFunction wFunc = new HannWindow(n);
+        WindowFunction wFunc = new TriangularWindow(n);
         input = wFunc.applyWindow(input);
 
         // init input values to complex

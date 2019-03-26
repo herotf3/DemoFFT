@@ -35,6 +35,7 @@ class AudioAnalyzerViewModel(context: Context, maxFrequency: Int, private val da
             fftData.setSize(fftSize)
 
             fftVM.onNextFFT(fftData)
+
             spectrogramVM.onNextFFT(fftData)
         }.bindToLifecycle(lifecycleProvider).subscribe()
     }
